@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+Пункт 1:
+Mantine используется – да, есть MantineProvider, компоненты Card, Button, Loader, Container и т.д.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Пункт 2:
+ LaunchCard использует <Card shadow="sm" padding="md" radius="md" withBorder> – да.
 
-Currently, two official plugins are available:
+Пункт 3 и 4: 
+В коде fetchLaunchesByYear использует https://api.spacexdata.com/v3/launches?launch_year=2020. Но поскольку API недоступно, использовал  мок-файл. Из-за ошибки 522 используется локальный мок, но код готов к работе с реальным API. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Пункт 5: 
+Параметр launch_year=2020 передаётся, в мок-данных также отфильтровано по 2020 году.
 
-## React Compiler
+Пункт 6: 
+В LaunchCard используются links.mission_patch_small, mission_name, rocket_name. В ModalPortal используются links.mission_patch, mission_name, rocket_name, details. – да.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Пункт 7: 
+В main.tsx есть <React.StrictMode> – да.
 
-## Expanding the ESLint configuration
+Пункт 8: 
+Управление состоянием через useReducer в hooks/useSpaceXReducer.ts – да.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Пункт 9: 
+Модальное окно реализовано через ReactDOM.createPortal – да.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Пункт 10:
+Визуально соответствует макету (карточки, кнопки, модалка) – да.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Пункт 11: 
+Типизация: есть types/launch.ts, все пропсы и состояние типизированы – да.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Пункт 12: 
+Тесты написаны (5 тестов, прошли) – да.
